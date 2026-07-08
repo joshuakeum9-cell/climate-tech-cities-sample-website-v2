@@ -1,4 +1,4 @@
-import { Button } from "@/components/Button";
+﻿import { Button } from "@/components/Button";
 import { GeoIcon } from "@/components/GeoIcon";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { Wave } from "@/components/Wave";
@@ -170,7 +170,7 @@ export default function HomePage() {
           </div>
           <div className="mt-12 flex flex-wrap gap-4">
             <Button href={START_A_CHAPTER_FORM_URL}>Start a Chapter</Button>
-            <Button href="/chapters">Check Out Our Chapters</Button>
+            <Button href="/chapters">Learn More About Our Chapters</Button>
           </div>
         </div>
       </section>
