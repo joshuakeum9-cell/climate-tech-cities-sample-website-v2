@@ -99,7 +99,10 @@ export default async function ChapterPage({
 
           {/* Events */}
           <section aria-labelledby="chapter-events">
-            <h2 id="chapter-events" className="text-3xl font-medium">
+            <h2
+              id="chapter-events"
+              className="scroll-mt-24 text-3xl font-medium"
+            >
               Events
             </h2>
 

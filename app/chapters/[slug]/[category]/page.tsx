@@ -41,11 +41,17 @@ export default async function ResourceCategoryPage({
   const page = getResourcePage(slug, category);
   if (!page) notFound();
 
-  const sidebarItems = getResourcePagesForCity(slug).map((rp) => ({
-    label: rp.sidebarLabel,
-    href: `/chapters/${slug}/${rp.categorySlug}`,
-    active: rp.categorySlug === category,
-  }));
+  // Resource-page sidebar only: append an Events row that jumps back to
+  // the Events section of the chapter page. (The chapter page's own
+  // sidebar intentionally omits this — events are already on that page.)
+  const sidebarItems = [
+    ...getResourcePagesForCity(slug).map((rp) => ({
+      label: rp.sidebarLabel,
+      href: `/chapters/${slug}/${rp.categorySlug}`,
+      active: rp.categorySlug === category,
+    })),
+    { label: "Events", href: `/chapters/${slug}#chapter-events` },
+  ];
 
   return (
     <div className="bg-cream">
