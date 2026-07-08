@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette mirrors the live Climate Tech Cities theme tokens */
+  --color-forest: #25331a;
+  --color-forest-soft: #46543a;
+  --color-cream: #f5f4e9;
+  --color-paper: #fefefb;
+  --color-lavender: #e2bdff;
+  --color-coral: #ef653a;
+  --color-leaf: #c8dcb0;
+  --color-leaf-soft: #e0e8d2;
+  --color-line: rgb(37 51 26 / 0.15);
+}
+
+/* `inline` so the utility resolves var(--font-mulish) at the element,
+   where next/font defines it */
+@theme inline {
+  --font-sans: var(--font-mulish), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-forest);
+  -webkit-font-smoothing: antialiased;
+  /* Decorative blob shapes intentionally bleed past their sections;
+     keep them from creating a horizontal scrollbar */
+  overflow-x: clip;
+}
