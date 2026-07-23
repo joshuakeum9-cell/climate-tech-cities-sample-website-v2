@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Button } from "@/components/Button";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { VOLUNTEER_FORM_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "About | Climate Tech Cities",
@@ -33,42 +34,21 @@ const team = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Clean text-only About Us section, per design feedback:
+          no hero photography, just the heading and mission statement */}
       <section className="bg-paper">
-        <div className="mx-auto max-w-[1400px] px-5 pt-16 sm:px-10">
-          <div className="grid items-end gap-10 md:grid-cols-2">
-            <div>
-              <p className="text-[15px]">About us</p>
-              <h1 className="mt-3 text-4xl leading-tight font-medium sm:text-5xl">
-                A global network of local communities
-              </h1>
-            </div>
-            <PlaceholderImage
-              variant="scene"
-              alt="Green building facade"
-              tone="leaf"
-              className="aspect-[4/3] w-full rounded-md"
-            />
-          </div>
-          <div className="mt-14 grid items-center gap-10 md:grid-cols-2">
-            <PlaceholderImage
-              variant="skyline"
-              alt="City towers seen from below"
-              tone="cream"
-              className="aspect-[4/3] w-full rounded-md"
-            />
-            <div>
-              <p className="text-[15px]">Connecting Climate Tech</p>
-              <p className="mt-4 max-w-lg text-[17px] leading-relaxed">
-                We&apos;re all about showing off how building for climate is
-                about making new, better futures. People are out there doing
-                amazing work in every sector you can imagine; we&apos;re the
-                glue that brings them together: connecting fashion designers,
-                fusion physicists, policy powerhouses, and everyone else in
-                between.
-              </p>
-            </div>
-          </div>
+        <div className="mx-auto max-w-[900px] px-5 pt-20 text-center sm:px-10 md:pt-28">
+          <p className="text-[15px]">About Us</p>
+          <h1 className="mt-4 text-4xl leading-tight font-medium sm:text-5xl">
+            A global network of local communities
+          </h1>
+          <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-relaxed">
+            We&apos;re all about showing off how building for climate is about
+            making new, better futures. People are out there doing amazing work
+            in every sector you can imagine; we&apos;re the glue that brings
+            them together: connecting fashion designers, fusion physicists,
+            policy powerhouses, and everyone else in between.
+          </p>
         </div>
       </section>
 
@@ -190,6 +170,25 @@ export default function AboutPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Volunteer */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-[900px] px-5 py-16 text-center sm:px-10 md:py-24">
+          <h2 className="text-3xl font-medium sm:text-4xl">
+            Come Build the Global Community
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed">
+            Climate Tech Cities runs on volunteers. Our chapters, newsletters,
+            events, and city guides are all built by people who care about
+            growing the climate community where they live. Whether you want to
+            run events, write, build partnerships, or help behind the scenes,
+            come work with us and help build the global community.
+          </p>
+          <div className="mt-8">
+            <Button href={VOLUNTEER_FORM_URL}>Volunteer With Us</Button>
           </div>
         </div>
       </section>

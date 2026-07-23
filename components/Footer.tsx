@@ -1,5 +1,5 @@
 import { Logo } from "./Logo";
-import { START_A_CHAPTER_FORM_URL } from "@/lib/links";
+import { START_A_CHAPTER_FORM_URL, VOLUNTEER_FORM_URL } from "@/lib/links";
 
 const footerColumns = [
   {
@@ -13,7 +13,7 @@ const footerColumns = [
     heading: "Get Involved",
     links: [
       { label: "Start a Chapter", href: START_A_CHAPTER_FORM_URL },
-      { label: "Volunteer", href: "#" },
+      { label: "Volunteer", href: VOLUNTEER_FORM_URL },
     ],
   },
 ];
