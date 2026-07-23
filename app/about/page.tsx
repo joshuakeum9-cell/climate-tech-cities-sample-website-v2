@@ -34,15 +34,17 @@ const team = [
 export default function AboutPage() {
   return (
     <>
-      {/* Clean text-only About Us section, per design feedback:
-          no hero photography, just the heading and mission statement */}
+      {/* Clean text-only About Us section, per design feedback: no hero
+          photography. Left-aligned to match how every other page opens
+          (Home, Chapters, Partners, Programs); the centered treatment is
+          reserved for closing CTA bands. */}
       <section className="bg-paper">
-        <div className="mx-auto max-w-[900px] px-5 pt-20 text-center sm:px-10 md:pt-28">
+        <div className="mx-auto max-w-[1400px] px-5 pt-16 sm:px-10 md:pt-24">
           <p className="text-[15px]">About Us</p>
-          <h1 className="mt-4 text-4xl leading-tight font-medium sm:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-4xl leading-tight font-medium sm:text-5xl">
             A global network of local communities
           </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-[17px] leading-relaxed">
+          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed">
             We&apos;re all about showing off how building for climate is about
             making new, better futures. People are out there doing amazing work
             in every sector you can imagine; we&apos;re the glue that brings
