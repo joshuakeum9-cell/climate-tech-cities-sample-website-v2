@@ -1,7 +1,15 @@
 import type { ChapterEvent } from "@/lib/chapter-pages";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { SceneImage } from "@/components/CityImage";
 
 const tones = ["leaf", "cream", "lavender"] as const;
+
+/** Maps the event image hint to the scene illustration that shows what a
+ *  real photo in this slot should depict. */
+const scenes = {
+  people: "meetup",
+  scene: "panel",
+  skyline: "sitevisit",
+} as const;
 
 export function EventCard({
   event,
@@ -12,9 +20,9 @@ export function EventCard({
 }) {
   return (
     <article className="overflow-hidden rounded-md border border-line bg-paper">
-      <PlaceholderImage
-        variant={event.imageVariant}
-        alt={`${event.title} placeholder image`}
+      <SceneImage
+        scene={scenes[event.imageVariant]}
+        alt={`Illustration for ${event.title}`}
         tone={tones[index % tones.length]}
         className="aspect-[3/2] w-full"
       />

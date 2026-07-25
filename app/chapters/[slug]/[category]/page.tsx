@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { CitySkyline, SceneImage, type CitySlug } from "@/components/CityImage";
 import { ResourceSidebar } from "@/components/chapters/ResourceSidebar";
 import {
   getResourcePage,
@@ -41,21 +41,20 @@ export default async function ResourceCategoryPage({
   const page = getResourcePage(slug, category);
   if (!page) notFound();
 
-  // Resource-page sidebar only: append an Events row that jumps back to
-  // the Events section of the chapter page. (The chapter page's own
-  // sidebar intentionally omits this — events are already on that page.)
-  const sidebarItems = [
-    ...getResourcePagesForCity(slug).map((rp) => ({
-      label: rp.sidebarLabel,
-      href: `/chapters/${slug}/${rp.categorySlug}`,
-      active: rp.categorySlug === category,
-    })),
-    { label: "Events", href: `/chapters/${slug}#chapter-events` },
-  ];
+  const sidebarItems = getResourcePagesForCity(slug).map((rp) => ({
+    label: rp.sidebarLabel,
+    href: `/chapters/${slug}/${rp.categorySlug}`,
+    active: rp.categorySlug === category,
+  }));
+  sidebarItems.push({
+    label: "Events",
+    href: `/chapters/${slug}#chapter-events`,
+    active: false,
+  });
 
   return (
     <div className="bg-cream">
-      {/* Hero: large stylized title left, city subtitle, image top right */}
+      {/* Hero: stylized title left, city subtitle, illustration top right */}
       <section className="mx-auto max-w-[1400px] px-5 pt-14 sm:px-10 md:pt-20">
         <p className="text-[15px]">
           <Link
@@ -80,9 +79,9 @@ export default async function ResourceCategoryPage({
             </h1>
             <p className="mt-5 text-2xl">{page.city}</p>
           </div>
-          <PlaceholderImage
-            variant="people"
-            alt={`${page.city} community event photo`}
+          <SceneImage
+            scene="meetup"
+            alt={`Illustration of a ${page.city} community event`}
             tone="lavender"
             className="aspect-[4/3] w-full max-w-md rounded-md md:justify-self-end"
           />
@@ -91,13 +90,11 @@ export default async function ResourceCategoryPage({
 
       {/* Sidebar + content */}
       <div className="mx-auto grid max-w-[1400px] gap-14 px-5 pb-20 pt-16 sm:px-10 md:pt-24 lg:grid-cols-[300px_1fr] lg:gap-16">
-        {/* Sidebar: left on desktop, below content on mobile */}
         <div className="order-2 lg:order-1">
           <ResourceSidebar city={page.city} items={sidebarItems} />
         </div>
 
         <div className="order-1 lg:order-2">
-          {/* Intro */}
           <div className="max-w-3xl space-y-6">
             <p className="text-2xl leading-snug font-medium sm:text-3xl">
               {page.introLead}
@@ -105,7 +102,6 @@ export default async function ResourceCategoryPage({
             <p className="text-[18px] leading-relaxed">{page.introBody}</p>
           </div>
 
-          {/* Organization groups */}
           <div className="mt-16 space-y-16">
             {page.groups.map((group, groupIndex) => (
               <section
@@ -122,15 +118,24 @@ export default async function ResourceCategoryPage({
                     {group.orgs.map((org) => (
                       <article key={org.name}>
                         <h3 className="text-[19px] font-semibold">
-                          <a
-                            href={org.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="underline decoration-1 underline-offset-4 transition-colors hover:text-coral"
-                          >
-                            {org.name}
-                          </a>
+                          {org.url ? (
+                            <a
+                              href={org.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline decoration-1 underline-offset-4 transition-colors hover:text-coral"
+                            >
+                              {org.name}
+                            </a>
+                          ) : (
+                            org.name
+                          )}
                         </h3>
+                        {(org.type || org.focus) && (
+                          <p className="mt-1.5 text-[13px] uppercase tracking-wide text-forest/55">
+                            {[org.type, org.focus].filter(Boolean).join(" · ")}
+                          </p>
+                        )}
                         <p className="mt-3 text-[16px] leading-[1.8]">
                           {org.body}
                         </p>
@@ -139,9 +144,9 @@ export default async function ResourceCategoryPage({
                   </div>
                 </div>
                 {group.photoBreakAfter && (
-                  <PlaceholderImage
-                    variant="skyline"
-                    alt={`${page.city} skyline`}
+                  <CitySkyline
+                    city={page.citySlug as CitySlug}
+                    alt={`Illustration of the ${page.city} skyline`}
                     tone="leaf"
                     className="mt-16 h-44 w-full rounded-md sm:h-56"
                   />
@@ -150,7 +155,6 @@ export default async function ResourceCategoryPage({
             ))}
           </div>
 
-          {/* Back to chapter */}
           <div className="mt-16">
             <Link
               href={`/chapters/${page.citySlug}`}

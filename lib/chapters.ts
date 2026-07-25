@@ -24,6 +24,7 @@ export const chapters: Chapter[] = [
     name: "San Francisco",
     description:
       "Founders, funders, and climate talent connecting across the Bay Area.",
+    slug: "san-francisco",
     x: 16,
     y: 35,
   },
@@ -31,6 +32,7 @@ export const chapters: Chapter[] = [
     name: "Los Angeles",
     description:
       "From mobility to adaptive infrastructure, LA spans every corner of climate.",
+    slug: "los-angeles",
     x: 17.2,
     y: 37.5,
   },
@@ -38,6 +40,7 @@ export const chapters: Chapter[] = [
     name: "Seattle",
     description:
       "Clean energy, software, and policy people building the Pacific Northwest scene.",
+    slug: "seattle",
     x: 16,
     y: 28.5,
   },
@@ -45,6 +48,7 @@ export const chapters: Chapter[] = [
     name: "San Diego",
     description:
       "Coastal resilience meets climate tech in our southernmost West Coast chapter.",
+    slug: "san-diego",
     x: 17.5,
     y: 39.5,
   },
@@ -52,6 +56,7 @@ export const chapters: Chapter[] = [
     name: "Washington, D.C.",
     description:
       "Policy powerhouses and technologists shaping climate action in the capital.",
+    slug: "washington-dc",
     x: 28.6,
     y: 34.5,
   },
@@ -59,6 +64,7 @@ export const chapters: Chapter[] = [
     name: "Boston",
     description:
       "Researchers, students, and founders bridging lab breakthroughs and city streets.",
+    slug: "boston",
     x: 30.3,
     y: 31.5,
   },
@@ -66,6 +72,7 @@ export const chapters: Chapter[] = [
     name: "London",
     description:
       "Our first international chapter, connecting Europe's climate tech ecosystem.",
+    slug: "london",
     x: 49.9,
     y: 25.5,
   },

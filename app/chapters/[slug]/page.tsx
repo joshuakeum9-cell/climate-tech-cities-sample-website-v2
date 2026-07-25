@@ -7,8 +7,8 @@ import {
 } from "@/components/chapters/ChapterCTA";
 import { EventCard } from "@/components/chapters/EventCard";
 import { OrganizerCard } from "@/components/chapters/OrganizerCard";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { ResourceSidebar } from "@/components/chapters/ResourceSidebar";
+import { ChapterLogoSlot, type CitySlug } from "@/components/CityImage";
 import { chapterPages, getChapterPage } from "@/lib/chapter-pages";
 import { getResourcePagesForCity } from "@/lib/resource-pages";
 
@@ -27,7 +27,7 @@ export async function generateMetadata({
   if (!page) return {};
   return {
     title: `${page.city} Chapter | Climate Tech Cities`,
-    description: page.narrative[0]?.slice(0, 155),
+    description: page.lede.slice(0, 155),
   };
 }
 
@@ -40,42 +40,34 @@ export default async function ChapterPage({
   const page = getChapterPage(slug);
   if (!page) notFound();
 
-  const [lede, ...restOfNarrative] = page.narrative;
-
-  // Sidebar rows link to the city's resource pages where they exist;
-  // otherwise fall back to the placeholder category labels.
-  const cityResourcePages = getResourcePagesForCity(slug);
-  const sidebarItems = cityResourcePages.length
-    ? cityResourcePages.map((rp) => ({
-        label: rp.sidebarLabel,
-        href: `/chapters/${slug}/${rp.categorySlug}`,
-      }))
-    : page.resourceCategories.map((label) => ({ label }));
+  const sidebarItems = getResourcePagesForCity(slug).map((rp) => ({
+    label: rp.sidebarLabel,
+    href: `/chapters/${slug}/${rp.categorySlug}`,
+  }));
 
   return (
     <>
-      <ChapterHero city={page.city} lede={lede} />
+      <ChapterHero
+        city={page.city}
+        slug={page.slug as CitySlug}
+        lede={page.lede}
+        newsletterUrl={page.newsletterUrl}
+      />
 
-      {/* About the chapter: full-width cream band, echoing how the homepage
-          separates major sections (e.g. Startup and Talent Network).
-          The title-plus-content composition is centered as one unit: the
-          narrow wrapper is centered in the band, the title sets the left
-          edge, and the indented content below sets the right edge. */}
-      <section aria-labelledby="chapter-about" className="bg-cream">
+      {/* The city narrative. Named for what it actually covers: the city's
+          relationship to climate tech, not the chapter itself. */}
+      <section aria-labelledby="city-climate" className="bg-cream">
         <div className="mx-auto max-w-[1060px] px-5 py-16 sm:px-10 md:py-24">
-          <h2 id="chapter-about" className="text-4xl font-medium">
-            About the {page.city} Chapter
+          <h2 id="city-climate" className="text-4xl font-medium">
+            {page.city} and Climate Tech
           </h2>
           <div className="mt-12 grid items-start gap-12 md:grid-cols-[260px_1fr] md:gap-16 md:pl-12">
-            <PlaceholderImage
-              variant="scene"
-              alt={`${page.city} chapter logo placeholder`}
-              tone="lavender"
-              label={`${page.city} Chapter Logo`}
+            <ChapterLogoSlot
+              city={page.city}
               className="aspect-square w-full max-w-[260px] rounded-md"
             />
             <div className="space-y-6">
-              {restOfNarrative.map((paragraph) => (
+              {page.narrative.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 40)}
                   className="text-[16px] leading-[1.8]"

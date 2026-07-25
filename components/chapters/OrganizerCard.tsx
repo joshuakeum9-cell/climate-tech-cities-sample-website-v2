@@ -1,5 +1,5 @@
 import type { Organizer } from "@/lib/chapter-pages";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { SceneImage } from "@/components/CityImage";
 
 export function OrganizerCard({
   organizer,
@@ -10,9 +10,9 @@ export function OrganizerCard({
 }) {
   return (
     <div className="text-center">
-      <PlaceholderImage
-        variant="portrait"
-        alt={`Portrait placeholder for ${organizer.name}`}
+      <SceneImage
+        scene="portrait"
+        alt={`Portrait illustration for ${organizer.name}`}
         tone={(["cream", "leaf", "lavender"] as const)[index % 3]}
         className="mx-auto aspect-square w-full max-w-[180px] rounded-md"
       />
