@@ -1,7 +1,11 @@
 /** Shared external links used across the site. */
-export const START_A_CHAPTER_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeMt-X4zZIVqvIM6d4GxqrfxXNzy45tKD46yFjNYrHh2qtHNw/viewform";
 
-/** Airtable volunteer-interest form (base: CTC Volunteer Interest).
- *  Placeholder until the form view's share link is created in Airtable. */
-export const VOLUNTEER_FORM_URL = "#";
+/** One comprehensive Airtable form serving both the Volunteer and
+ *  Start a Chapter CTAs. The form's "I'm Interested In" question
+ *  distinguishes the two paths. Submissions land in the
+ *  "Get Involved" table of the CTC Volunteer Interest base. */
+export const GET_INVOLVED_FORM_URL =
+  "https://airtable.com/appJJx88dpQsUuEas/pagA3Zi7dEGeGuxmd/form";
+
+export const START_A_CHAPTER_FORM_URL = GET_INVOLVED_FORM_URL;
+export const VOLUNTEER_FORM_URL = GET_INVOLVED_FORM_URL;
