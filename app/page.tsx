@@ -1,4 +1,5 @@
-﻿import { Button } from "@/components/Button";
+﻿import Link from "next/link";
+import { Button } from "@/components/Button";
 import { GeoIcon } from "@/components/GeoIcon";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { Wave } from "@/components/Wave";
@@ -92,10 +93,21 @@ export default function HomePage() {
               and career transitioners!
             </p>
             <p className="mt-5 text-[17px] leading-relaxed">
-              At Streetlife Ventures, we invest at the intersection of cities x
-              climate. In addition, we work with founders to test, iterate, and
-              accelerate urban climate solutions, in partnership with cities,
-              real estate developers, infrastructure groups, and OEMs.
+              Streetlife Ventures invests in the $5 trillion market opportunity
+              at the intersection of cities and climate. With 30+ years of
+              urban experience and a 25,000+ member platform of climate
+              founders, operators, policymakers, and emerging talent, we help
+              build and scale the companies shaping more sustainable cities.
+              The firm invests in pre-seed and seed startups across buildings,
+              energy, mobility and logistics, waste and water, and adaptive
+              infrastructure.
+            </p>
+            <p className="mt-5 text-[17px] leading-relaxed">
+              Beyond capital, Streetlife partners with cities, real estate
+              developers, and infrastructure groups to de-risk urban climate
+              solutions and accelerate startups&apos; path to
+              commercialization. Our mission: to advance cities, investing in
+              the people and places they call home.
             </p>
             <p className="mt-5 text-[17px] leading-relaxed">
               We&apos;re the ultimate optimists and are excited to work with
@@ -141,11 +153,26 @@ export default function HomePage() {
             scientists, investors, artists, policymakers, academics,
             jobseekers, and climate leaders in cities around the world.
           </h2>
-          <p className="text-[16px] leading-relaxed md:pt-3">
-            We are a big-tent organization that connects professionals across
-            industries to share knowledge and build local, in-person
-            communities around climate policy, technology, and solutions.
-          </p>
+          <div className="md:pt-3">
+            <p className="text-[16px] leading-relaxed">
+              We are a big-tent organization that connects professionals across
+              industries to take climate action in their own streets and
+              neighborhoods. We send weekly newsletters and host topical
+              panels, happy hours, site visits to infrastructure projects, and
+              more.
+            </p>
+            <p className="mt-5 text-[16px] leading-relaxed">
+              Since 2021, we have welcomed newcomers and old hands in climate
+              to work on, share, and grow as we build solutions towards a
+              decarbonized future.{" "}
+              <Link
+                href="/chapters"
+                className="underline decoration-1 underline-offset-4 hover:text-coral"
+              >
+                Join your local chapter today!
+              </Link>
+            </p>
+          </div>
         </div>
       </section>
 
